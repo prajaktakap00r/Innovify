@@ -1,13 +1,28 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import React from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+import {
+  HomeLayout,
+  Landing,
+  Register,
+  Login,
+  DashboardLayout,
+  Error,
+} from "./pages";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <HomeLayout />,
+  },
+  {
+    path: "/register",
+    element: <Register />,
+  },
+]);
 
 function App() {
-  return (
-    <>
-      <h1>Innovify</h1>
-    </>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
