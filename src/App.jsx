@@ -1,4 +1,5 @@
 import React from "react";
+
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import {
@@ -14,26 +15,25 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <HomeLayout />,
-  },
-  {
-    path: "/register",
-    element: <Register />,
-  },
-  {
-    path: "/landing",
-    element: <Landing />,
-  },
-  {
-    path: "/login",
-    element: <Login />,
-  },
-  {
-    path: "/error",
-    element: <Error />,
-  },
-  {
-    path: "/DashBoard",
-    element: <DashboardLayout />,
+    errorElement: <Error />,
+    children: [
+      {
+        index: true,
+        element: <Landing />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/DashBoard",
+        element: <DashboardLayout />,
+      },
+    ],
   },
 ]);
 

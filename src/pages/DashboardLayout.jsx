@@ -1,4 +1,4 @@
-export default function DashboradLayout() {
+export default function DashboardLayout() {
   return (
     <div>
       <h1>DashBoard Layout</h1>
