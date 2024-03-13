@@ -9,7 +9,7 @@ import {
   Login,
   DashboardLayout,
   Error,
-} from "./pages";
+} from "../src/assets/pages";
 
 const router = createBrowserRouter([
   {
