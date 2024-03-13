@@ -1,16 +1,13 @@
 import styled from "styled-components";
-
-const Styledbtn = styled.button`
-  background: red;
-  color: white;
-  font-size: 1.5rem;
-`;
+import Wrapper from "../wrappers/LandingPage";
+import logo from "../images/logo.svg";
 
 export default function Landing() {
   return (
-    <div>
-      <h1>Landing Layout</h1>
-      <Styledbtn>Button</Styledbtn>
-    </div>
+    <Wrapper>
+      <nav>
+        <img src="{logo}" className="logo" alt="Inovify" />
+      </nav>
+    </Wrapper>
   );
 }
