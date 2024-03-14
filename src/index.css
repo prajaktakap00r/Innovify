@@ -6,6 +6,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+ 
 }
 
 html {
@@ -65,9 +66,9 @@ html {
     0 10px 10px -5px rgba(0, 0, 0, 0.04);
   /* DARK MODE */
 
-  --dark-mode-bg-color: #333;
+  --dark-mode-bg-color: #000;
   --dark-mode-text-color: #f0f0f0;
-  --dark-mode-bg-secondary-color: #3f3f3f;
+  --dark-mode-bg-secondary-color: #000;
   --dark-mode-text-secondary-color: var(--grey-300);
 
   --background-color: var(--grey-50);

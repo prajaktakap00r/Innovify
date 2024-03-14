@@ -4,17 +4,13 @@ import logo from "../assets/images/logo2.png";
 import innovify2 from "../assets/images/ino1.png";
 import "../index.css";
 import { Link } from "react-router-dom";
+import Logo from "../components/logo";
 
 export default function Landing() {
   return (
     <Wrapper>
       <nav>
-        <img
-          src={logo}
-          alt="Innovify"
-          className="logo"
-          style={{ width: 180, height: 50 }}
-        />
+        <Logo />
       </nav>
       <div className="container page">
         <div>
