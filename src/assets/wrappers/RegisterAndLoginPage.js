@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const Wrapper = styled.section`
   min-height: 100vh;
@@ -11,7 +11,7 @@ const Wrapper = styled.section`
   }
   .form {
     max-width: 400px;
-    border-top: 5px solid var(--primary-500);
+    border-top: 5px solid #eb5e28;
   }
   h4 {
     text-align: center;
@@ -26,7 +26,7 @@ const Wrapper = styled.section`
     margin-top: 1rem;
   }
   .member-btn {
-    color: var(--primary-500);
+    color: #eb5e28;
     letter-spacing: var(--letter-spacing);
     margin-left: 0.25rem;
   }
