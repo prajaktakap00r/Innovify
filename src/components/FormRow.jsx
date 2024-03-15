@@ -1,6 +1,6 @@
 export default function FormRow({ type, name, labelText, defaultValue }) {
   return (
-    <div>
+    <div style={{ margin: 10 }}>
       <label className="form-label" htmlFor={name}>
         {labelText || name}
       </label>

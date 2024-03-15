@@ -9,11 +9,15 @@ export default function Register() {
       <form className="form">
         <Logo />
         <h4>Register</h4>
-        <FormRow type="text" name="name" defaultValue="John" />
-        <FormRow type="text" name="Last name" defaultValue="John" />
-        <FormRow type="text" name="Location" defaultValue="John" />
-        <FormRow type="text" name="Email" defaultValue="John" />
-        <FormRow type="password" name="Password" defaultValue="John" />
+        <FormRow type="text" name="name" defaultValue="Prajakta " />
+        <FormRow type="text" name="Last name" defaultValue="Kapoor" />
+        <FormRow type="text" name="Location" defaultValue="Jammu" />
+        <FormRow
+          type="text"
+          name="Email"
+          defaultValue="kprajakta235@gmail.com"
+        />
+        <FormRow type="password" name="Password" defaultValue="secret123" />
 
         <button className="btn btn-block">Submit</button>
         <p>
