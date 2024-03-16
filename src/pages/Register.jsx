@@ -13,13 +13,15 @@ export default function Register() {
         <FormRow type="text" name="Last name" defaultValue="Kapoor" />
         <FormRow type="text" name="Location" defaultValue="Jammu" />
         <FormRow
-          type="text"
+          type="email"
           name="Email"
           defaultValue="kprajakta235@gmail.com"
         />
         <FormRow type="password" name="Password" defaultValue="secret123" />
 
-        <button className="btn btn-block">Submit</button>
+        <button className="btn btn-block" type="submit">
+          Submit
+        </button>
         <p>
           Already a member?{" "}
           <Link to="/login" style={{ color: "#eb5e28" }}>
