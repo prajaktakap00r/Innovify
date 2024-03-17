@@ -9,6 +9,11 @@ import {
   Login,
   DashboardLayout,
   Error,
+  AddJob,
+  Stats,
+  AllJobs,
+  Profile,
+  Admin,
 } from "../src/pages";
 
 const router = createBrowserRouter([
@@ -22,15 +27,15 @@ const router = createBrowserRouter([
         element: <Landing />,
       },
       {
-        path: "/register",
+        path: "register",
         element: <Register />,
       },
       {
-        path: "/login",
+        path: "login",
         element: <Login />,
       },
       {
-        path: "/DashBoard",
+        path: "DashBoard",
         element: <DashboardLayout />,
       },
     ],
