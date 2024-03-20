@@ -12,7 +12,7 @@ const NavLinks = ({ isBigSidebar }) => {
         if (path === "admin" && role !== "admin") return;
         return (
           <NavLink
-            to={path}
+            to={path} //where you want to go
             key={text}
             className="nav-link"
             onClick={isBigSidebar ? null : toggleSidebar}
