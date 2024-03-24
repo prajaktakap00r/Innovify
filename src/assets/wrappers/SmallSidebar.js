@@ -39,18 +39,18 @@ const Wrapper = styled.aside`
     background: transparent;
     border-color: transparent;
     font-size: 2rem;
-    color: var(--red-dark);
+    color: #a020f0;
     cursor: pointer;
   }
   .nav-links {
     padding-top: 2rem;
     display: flex;
-    flex-direction: column;
+    flex-direction: column; //to stack them one over another
   }
   .nav-link {
     display: flex;
     align-items: center;
-    color: #000000;
+    color: var(--black);
     padding: 1rem 0;
     text-transform: capitalize;
     transition: var(--transition);
@@ -65,7 +65,7 @@ const Wrapper = styled.aside`
     place-items: center;
   }
   .active {
-    color: var(--primary-500);
+    color: #eb5e28;
   }
 `;
 export default Wrapper;
