@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import Wrapper from "../assets/wrappers/LandingPage";
-import logo from "../assets/images/logo2.png";
 import innovify2 from "../assets/images/ino1.png";
 import "../index.css";
 import { Link } from "react-router-dom";
