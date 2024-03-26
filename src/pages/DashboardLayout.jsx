@@ -9,9 +9,7 @@ export default function DashboardLayout() {
   const [showSidebar, setShowSidebar] = useState(false);
   const [isDarkTheme, setIsDarkTheme] = useState(false);
 
-  const toggleDarkTheme = () => {
-    console.log("Dark theme");
-  };
+  const toggleDarkTheme = () => {};
   const toggleSidebar = () => {
     setShowSidebar(!showSidebar);
   };

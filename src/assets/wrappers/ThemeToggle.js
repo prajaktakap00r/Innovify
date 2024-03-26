@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const Wrapper = styled.button`
   background: transparent;
@@ -13,4 +13,5 @@ const Wrapper = styled.button`
     color: var(--text-color);
   }
 `;
+
 export default Wrapper;
