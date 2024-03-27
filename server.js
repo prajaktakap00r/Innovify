@@ -1,7 +1,7 @@
 //import * as dotenv from "dotenv";
 const dotenv = require("dotenv");
 dotenv.config();
-//import express from "express" this statement will not work use the state below of commonJS
+//import express from "express" this statement will not work use the state below of COMMONJS
 const express = require("express");
 const app = express();
 
@@ -28,6 +28,6 @@ app.listen(port, () => {
 });
 
 //New Features
-//-Fetch API
+//-Fetch API //fetch api directly instead of using thunder client
 //-Global await
 //-watch mode  same as nodemon , setUp in package.json with name watch
