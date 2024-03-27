@@ -7,10 +7,6 @@ const app = express();
 
 const morgan = require("morgan");
 
-fetch("https://www.course-api.com/react-useReducer-cart-project")
-  .then((res) => res.json())
-  .then((data) => console.log(data));
-
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
@@ -34,4 +30,4 @@ app.listen(port, () => {
 //New Features
 //-Fetch API
 //-Global await
-//-watch mode  same as nodemon
+//-watch mode  same as nodemon , setUp in package.json with name watch
