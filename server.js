@@ -3,9 +3,16 @@ const dotenv = require("dotenv");
 dotenv.config();
 //import express from "express" this statement will not work use the state below of COMMONJS
 const express = require("express");
-const app = express();
 
+const app = express();
 const morgan = require("morgan");
+//simple import of nanoid is giving error
+
+const { v4: uuidv4 } = require("uuid");
+let jobs = [
+  { id: uuidv4(), company: "apple", position: "front-end" },
+  { id: uuidv4(), company: "google", position: "back-end" },
+];
 
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
