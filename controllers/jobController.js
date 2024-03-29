@@ -55,4 +55,4 @@ const deleteJob = async (req, res) => {
 
   res.status(200).json({ msg: "job deleted" });
 };
-module.exports = { getAllJobs, createJob, getJob, editJob, deleteJob };
+module.exports = { getAllJobs, createJob, getJob, editJob, deleteJob }; //not working with ES6 that why have to use COMMON JS
