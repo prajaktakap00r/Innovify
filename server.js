@@ -8,6 +8,10 @@ const app = express();
 const morgan = require("morgan");
 //nanoid is giving error
 
+//import jobRouter from "./routes/jobRouter.js";
+// server.js
+const jobRouter = require("./routes/jobRouter.js");
+
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
@@ -22,20 +26,7 @@ app.post("/", (req, res) => {
   res.json({ message: "received", data: req.body });
 });
 
-//GET ALL JOBS
-app.get("/api/v1/jobs");
-
-//CREATE JOBS
-app.post("/api/v1/jobs");
-
-//GET SINGLE JOB
-app.get("/api/v1/jobs/:id");
-
-//EDIT JOBS
-app.patch("/api/v1/jobs/:id");
-
-//DELETE JOB
-app.delete("/api/v1/jobs/:id");
+app.use("/api/v1/jobs", jobRouter);
 app.use("*", (req, res) => {
   res.status(404).json({ msg: "NOT FOUND" });
 });

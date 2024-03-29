@@ -3,11 +3,11 @@ let jobs = [
   { id: uuidv4(), company: "apple", position: "front-end" },
   { id: uuidv4(), company: "google", position: "back-end" },
 ];
-export const getAllJobs = async (req, res) => {
+const getAllJobs = async (req, res) => {
   res.status(200).json({ jobs });
 };
 
-export const createJob = async (req, res) => {
+const createJob = async (req, res) => {
   const { company, position } = req.body;
   if (!company || !position) {
     return res.status(400).json({ msg: "please provide company and position" });
@@ -19,7 +19,7 @@ export const createJob = async (req, res) => {
   res.status(201).json({ job });
 };
 
-export const getJob = async (req, res) => {
+const getJob = async (req, res) => {
   const { id } = req.params;
   const job = jobs.find((job) => job.id === id);
   if (!job) {
@@ -29,7 +29,7 @@ export const getJob = async (req, res) => {
   res.status(200).json({ job });
 };
 
-export const editJob = async (req, res) => {
+const editJob = async (req, res) => {
   const { company, position } = req.body;
   if (!company || !position) {
     return res.status(400).json({ msg: "Please enter company and position" });
@@ -44,7 +44,7 @@ export const editJob = async (req, res) => {
   res.status(200).json({ msg: "job modified", job });
 };
 
-export const deleteJob = async (req, res) => {
+const deleteJob = async (req, res) => {
   const { id } = req.params;
   const job = jobs.find((job) => job.id === id);
   if (!job) {
@@ -55,3 +55,4 @@ export const deleteJob = async (req, res) => {
 
   res.status(200).json({ msg: "job deleted" });
 };
+module.exports = { getAllJobs, createJob, getJob, editJob, deleteJob };
