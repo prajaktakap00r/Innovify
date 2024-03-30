@@ -1,3 +1,4 @@
+const { Job: JobModels } = require("../models/JobModels");
 const { v4: uuidv4 } = require("uuid");
 let jobs = [
   { id: uuidv4(), company: "apple", position: "front-end" },
