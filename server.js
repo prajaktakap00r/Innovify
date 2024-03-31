@@ -5,12 +5,10 @@ import mongoose from "mongoose";
 
 // Import routers
 import jobRouter from "./routers/jobRouter.js";
-
-// Load environment variables from .env file
-dotenv.config();
-
 // Create Express app
 const app = express();
+// Load environment variables from .env file
+dotenv.config();
 
 // Middleware
 
@@ -29,40 +27,25 @@ app.post("/", (req, res) => {
   console.log(req);
   res.json({ message: "Data received", data: req.body });
 });
-//GET AL JOBS
-app.get("/api/v1/jobs");
-//CREATE JOB
-app.post("/api/v1/jobs");
-//GET single JOBS
-app.get("/api/v1/jobs/:id");
-//EDIT JOB
-app.patch("/api/v1/jobs/:id");
 
-//DELETE JOB
-app.delete("/api/v1/jobs/:id");
-
-app.use("api/v1/jobs", jobRouter);
+app.use("/api/v1/jobs", jobRouter);
 
 app.use("*", (req, res) => {
   res.status(404).json({ msg: "not found" });
 });
 
 app.use((err, req, res, next) => {
+  console.log(err);
   res.status(500).json({ msg: "something went wrong" });
 });
 // Connect to MongoDB
-async function connectToDB() {
-  try {
-    await mongoose.connect(process.env.MONGO_URL);
-    console.log("Connected to MongoDB");
-  } catch (error) {
-    console.error("Failed to connect to MongoDB:", error);
-    process.exit(1);
-  }
-}
-
-// Start server
 const port = process.env.PORT || 5173;
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-});
+try {
+  await mongoose.connect(process.env.MONGO_URL);
+  app.listen(port, () => {
+    console.log(`server running on PORT ${port}....`);
+  });
+} catch (error) {
+  console.log(error);
+  process.exit(1);
+}
