@@ -1,12 +1,15 @@
 {
-  "name": "innovify",
+  "name": "jobify",
   "version": "1.0.0",
-  "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
-  "main": "vite.config.js",
+  "description": "[Jobify](https://mern-jobify-v2.onrender.com/)",
+  "main": "index.js",
+  "type": "module",
   "scripts": {
     "setup-project": "npm i && cd client && npm i",
-    "dev": "nodemon server.js",
-    "watch": "node --watch server.js"
+    "setup-production-app": "npm i && cd client && npm i && npm run build ",
+    "server": "nodemon server",
+    "client": "cd client && npm run dev",
+    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
   },
   "keywords": [],
   "author": "",
@@ -17,7 +20,7 @@
     "concurrently": "^8.0.1",
     "cookie-parser": "^1.4.6",
     "datauri": "^4.1.0",
-    "dayjs": "^1.11.9",
+    "dayjs": "^1.11.7",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "express-async-errors": "^3.1.1",
@@ -31,7 +34,6 @@
     "morgan": "^1.10.0",
     "multer": "^1.4.5-lts.1",
     "nanoid": "^4.0.2",
-    "nodemon": "^3.1.0",
-    "uuid": "^9.0.1"
+    "nodemon": "^3.1.0"
   }
 }

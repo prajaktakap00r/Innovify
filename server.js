@@ -1,19 +1,19 @@
-// Require dependencies
-const express = require("express");
-const mongoose = require("mongoose");
-const dotenv = require("dotenv");
+import express from "express";
+import morgan from "morgan";
+import * as dotenv from "dotenv";
+import mongoose from "mongoose";
+
+// Import routers
+import jobRouter from "./routers/jobRouter.js";
 
 // Load environment variables from .env file
 dotenv.config();
 
 // Create Express app
 const app = express();
-const morgan = require("morgan");
-
-// Import routes
-const jobRouter = require("./routes/jobRouter.js");
 
 // Middleware
+
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
@@ -23,25 +23,33 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.send("Hello World");
 });
+
+// Additional route for receiving data
 app.post("/", (req, res) => {
   console.log(req);
-  res.json({ message: "received", data: req.body });
+  res.json({ message: "Data received", data: req.body });
 });
+//GET AL JOBS
+app.get("/api/v1/jobs");
+//CREATE JOB
+app.post("/api/v1/jobs");
+//GET single JOBS
+app.get("/api/v1/jobs/:id");
+//EDIT JOB
+app.patch("/api/v1/jobs/:id");
 
-// Use jobRouter for /api/v1/jobs route
-app.use("/api/v1/jobs", jobRouter);
+//DELETE JOB
+app.delete("/api/v1/jobs/:id");
 
-// 404 Not Found Middleware
+app.use("api/v1/jobs", jobRouter);
+
 app.use("*", (req, res) => {
-  res.status(404).json({ msg: "NOT FOUND" });
+  res.status(404).json({ msg: "not found" });
 });
 
-// Error handling middleware
 app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).json({ msg: "Something Went Wrong" });
+  res.status(500).json({ msg: "something went wrong" });
 });
-
 // Connect to MongoDB
 async function connectToDB() {
   try {
@@ -57,5 +65,4 @@ async function connectToDB() {
 const port = process.env.PORT || 5173;
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
-  connectToDB();
 });
