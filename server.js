@@ -24,9 +24,9 @@ app.get("/", (req, res) => {
 });
 
 // Additional route for receiving data
-app.post("/api/v1/jobs", (req, res) => {
+app.post("/", (req, res) => {
   console.log(req);
-  res.json({ message: "Data received", data: req.body });
+  res.json({ message: "Data received", jobs: req.body });
 });
 
 app.use("/api/v1/jobs", jobRouter);
