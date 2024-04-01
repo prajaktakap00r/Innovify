@@ -11,12 +11,8 @@ export const getAllJobs = async (req, res) => {
 };
 
 export const createJob = async (req, res) => {
-  try {
-    const job = await Job.create(req.body);
-    res.status(201).json({ job });
-  } catch (error) {
-    res.status(500).json({ error: "Internal Server Error" });
-  }
+  const job = await Job.create(req.body); //agr body me koi additional para dal dia fir b nai display hoga
+  res.status(201).json({ job });
 };
 
 export const getJob = async (req, res) => {
