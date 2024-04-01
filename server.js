@@ -15,6 +15,7 @@ dotenv.config();
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
+
 app.use(express.json());
 
 // Routes
@@ -23,7 +24,7 @@ app.get("/", (req, res) => {
 });
 
 // Additional route for receiving data
-app.post("/", (req, res) => {
+app.post("/api/v1/jobs", (req, res) => {
   console.log(req);
   res.json({ message: "Data received", data: req.body });
 });
@@ -39,7 +40,7 @@ app.use((err, req, res, next) => {
   res.status(500).json({ msg: "something went wrong" });
 });
 // Connect to MongoDB
-const port = process.env.PORT || 5173;
+const port = process.env.PORT || 5100;
 try {
   await mongoose.connect(process.env.MONGO_URL);
   app.listen(port, () => {
