@@ -1,11 +1,5 @@
 import "express-async-errors";
 import Job from "../models/JobModels.js";
-import { nanoid } from "nanoid";
-
-let jobs = [
-  { id: nanoid(), company: "apple", position: "front-end developer" },
-  { id: nanoid(), company: "google", position: "back-end developer" },
-];
 
 export const getAllJobs = async (req, res) => {
   const jobs = await Job.find({});
@@ -29,11 +23,11 @@ export const getJob = async (req, res) => {
 
 export const updateJob = async (req, res) => {
   const { id } = req.params;
-  const updatedJob = jobs.findbyIdAndUpdate(id, req.body, { new: true });
+  const updatedJob = await Job.findByIdAndUpdate(id, req.body, { new: true });
   if (!updatedJob) {
     return res.status(404).json({ msg: `no job with id ${id}` });
   }
-  res.status(200).json({ msg: "job modified", updateJob });
+  res.status(200).json({ msg: "job modified", job: updatedJob });
 };
 
 export const deleteJob = async (req, res) => {
