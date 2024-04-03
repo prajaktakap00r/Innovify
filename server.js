@@ -5,6 +5,7 @@ import * as dotenv from "dotenv";
 import mongoose from "mongoose";
 // Import routers
 import jobRouter from "./routers/jobRouter.js";
+import { body, validationResult } from "express-validator";
 
 // Middleware
 import errorHandleMiddleware from "./middleware/errorHandlerMiddleware.js";
@@ -28,10 +29,29 @@ app.get("/", (req, res) => {
 });
 
 // Additional route for receiving data
-app.post("/", (req, res) => {
-  console.log(req);
-  res.json({ message: "Data received", jobs: req.body });
-});
+
+app.post(
+  "/api/v1/test",
+  [
+    body("name")
+      .notEmpty()
+      .withMessage("name is required")
+      .isLength({ min: 50 })
+      .withMessage("name must be at least of length 50"),
+  ],
+  (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      const errorMessages = errors.array().map((error) => error.msg);
+      return res.status(400).json({ errors: errorMessages });
+    }
+    next();
+  },
+  (req, res) => {
+    const { name } = req.body;
+    res.json({ msg: `hello ${name}` });
+  }
+);
 
 app.use("/api/v1/jobs", jobRouter);
 
