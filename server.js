@@ -8,7 +8,6 @@ import jobRouter from "./routers/jobRouter.js";
 
 // Middleware
 import errorHandleMiddleware from "./middleware/errorHandlerMiddleware.js";
-import { validateTest } from "./middleware/validationMiddleware.js";
 
 // Create Express app
 const app = express();
@@ -30,7 +29,7 @@ app.get("/", (req, res) => {
 
 // Additional route for receiving data
 
-app.post("/api/v1/test", validateTest, (req, res) => {
+app.post("/api/v1/test", (req, res) => {
   const { name } = req.body;
   res.json({ msg: `hello ${name}` });
 });
