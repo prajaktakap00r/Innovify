@@ -20,7 +20,7 @@ const withValidationErrors = (validateValues) => {
     },
   ];
 };
-
+//validation for everry input
 export const validateJobInput = withValidationErrors([
   body("company").notEmpty().withMessage("company is required"),
   body("position").notEmpty().withMessage("position is required"),
