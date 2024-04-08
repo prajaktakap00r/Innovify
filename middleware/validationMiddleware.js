@@ -40,3 +40,10 @@ export const validateIdParam = withValidationErrors([
     if (!job) throw new NotFoundError(`no job with this id ${value}`);
   }),
 ]);
+
+export const validateInputRegister = withValidationErrors([
+  body("name").notEmpty().withMessage("name is required"),
+  body("email").notEmpty().withMessage("email is required"),
+  body("location").notEmpty().withMessage("location is required"),
+  body("password").notEmpty().withMessage("password is required"),
+]);
