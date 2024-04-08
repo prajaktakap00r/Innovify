@@ -12,7 +12,7 @@ const withValidationErrors = (validateValues) => {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
         const errorMessages = errors.array().map((error) => error.msg);
-        if (errorMessages[0].startswith("no job")) {
+        if (errorMessages[0].startsWith("no job")) {
           throw new NotFoundError(errorMessages);
         }
         throw new BadRequestError(errorMessages);
@@ -60,4 +60,5 @@ export const validateInputRegister = withValidationErrors([
     .withMessage("password is required")
     .isLength({ min: 8, max: 20 })
     .withMessage("password must be 8 characters long"),
+  body("lastName").notEmpty().withMessage("last name is required"),
 ]);
