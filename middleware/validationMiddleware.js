@@ -17,7 +17,7 @@ const withValidationErrors = (validateValues) => {
         }
         throw new BadRequestError(errorMessages);
       }
-      next();
+      next(); //pass to the next middleware
     },
   ];
 };

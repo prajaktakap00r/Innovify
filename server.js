@@ -8,6 +8,8 @@ import jobRouter from "./routers/jobRouter.js";
 import authRouter from "./routers/authRouter.js";
 // Middleware
 import errorHandleMiddleware from "./middleware/errorHandlerMiddleware.js";
+import { authenticateUser } from "./middleware/authMiddleware.js";
+import cookieParser from "cookie-parser";
 
 // Create Express app
 const app = express();
@@ -19,7 +21,7 @@ dotenv.config();
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
-
+app.use(cookieParser());
 app.use(express.json());
 
 // Routes
@@ -34,7 +36,7 @@ app.post("/api/v1/test", (req, res) => {
   res.json({ msg: `hello ${name}` });
 });
 
-app.use("/api/v1/jobs", jobRouter);
+app.use("/api/v1/jobs", authenticateUser, jobRouter);
 app.use("/api/v1/auth", authRouter);
 
 app.use("*", (req, res) => {
