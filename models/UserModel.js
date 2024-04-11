@@ -18,4 +18,11 @@ const UserSchema = new mongoose.Schema({
     default: "user",
   },
 });
+// remove the password when we display the current user/used in userController
+//fucntion name is toJSON
+UserSchema.methods.toJSON = function () {
+  let obj = this.toObject();
+  delete obj.password;
+  return obj;
+};
 export default mongoose.model("User", UserSchema);
