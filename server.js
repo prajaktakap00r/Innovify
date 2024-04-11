@@ -6,6 +6,7 @@ import mongoose from "mongoose";
 // Import routers
 import jobRouter from "./routers/jobRouter.js";
 import authRouter from "./routers/authRouter.js";
+import userRouter from "./routers/userRouter.js";
 // Middleware
 import errorHandleMiddleware from "./middleware/errorHandlerMiddleware.js";
 import { authenticateUser } from "./middleware/authMiddleware.js";
@@ -37,6 +38,7 @@ app.post("/api/v1/test", (req, res) => {
 });
 
 app.use("/api/v1/jobs", authenticateUser, jobRouter);
+app.use("/api/v1/users", authenticateUser, userRouter);
 app.use("/api/v1/auth", authRouter);
 
 app.use("*", (req, res) => {
