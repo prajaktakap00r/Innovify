@@ -1,9 +1,9 @@
 import { UnauthenticatedError } from "../errors/customError.js";
 import { verifyJWT } from "../utils/tokenUtils.js";
 
-export const authenticateUser = async (req, res, next) => {
+export const authenticateUser = (req, res, next) => {
   const { token } = req.cookies;
-  if (!token) throw new UnauthenticatedError("UNauthenticated invalid");
+  if (!token) throw new UnauthenticatedError("authenticated invalid");
   try {
     const { userId, role } = verifyJWT(token);
     req.user = { userId, role };
