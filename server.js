@@ -31,7 +31,9 @@ app.get("/", (req, res) => {
 });
 
 // Additional route for receiving data
-
+app.get("/api/v1/test", (req, res) => {
+  res.json({ msg: "test route" });
+});
 app.post("/api/v1/test", (req, res) => {
   const { name } = req.body;
   res.json({ msg: `hello ${name}` });
