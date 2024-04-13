@@ -38,8 +38,8 @@ export default function Register() {
         />
         <FormRow type="password" name="password" defaultValue="secret123" />
 
-        <button className="btn btn-block" type="submit">
-          Submit
+        <button className="btn btn-block" type="submit" disabled={isSubmitting}>
+          {isSubmitting ? "submitting...." : "Submit"}
         </button>
         <p>
           Already a member?{" "}
