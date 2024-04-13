@@ -8,13 +8,16 @@ export const action = async ({ request }) => {
   const data = Object.fromEntries(formData);
   try {
     await customFetch.post("/auth/register", data);
-    return null;
+    return redirect("/login");
   } catch (error) {
     console.log(error);
     return error;
   }
 };
 export default function Register() {
+  const navigation = useNavigation();
+  console.log(navigation);
+  const isSubmitting = navigation.state === "submitting";
   return (
     <Wrapper>
       <Form method="post" className="form">
