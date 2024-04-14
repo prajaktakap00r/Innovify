@@ -13,7 +13,7 @@ export const action = async ({ request }) => {
     return redirect("/login");
   } catch (error) {
     toast.error(error?.response?.data?.msg);
-    console.log(error);
+
     return error;
   }
 };

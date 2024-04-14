@@ -1,8 +1,12 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, redirect, useLoaderData } from "react-router-dom";
 import Wrapper from "../assets/wrappers/Dashboard";
 import { SmallSidebar, Navbar, BigSideBar } from "../components";
 import { useState, createContext, useContext } from "react";
 import { checkDefaultTheme } from "../App";
+
+export const loader = () => {
+  return "Hlo";
+};
 
 const DashboardContext = createContext();
 
