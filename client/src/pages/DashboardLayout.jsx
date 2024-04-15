@@ -33,7 +33,7 @@ export default function DashboardLayout({}) {
     setShowSidebar(!showSidebar);
   };
   const logoutUser = async () => {
-    navigate("/");
+    navigate("/"); //works same as redirect,
     await customFetch.get("/auth/logout");
     toast.success("Logging out..");
   };
