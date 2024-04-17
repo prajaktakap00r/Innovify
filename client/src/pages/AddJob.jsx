@@ -32,9 +32,9 @@ const AddJob = () => {
           />
           <FromRowSelect
             labelText="job type"
-            name="jobStatus"
-            defaultValue={JOB_STATUS.PENDING}
-            list={Object.values(JOB_STATUS)}
+            name="jobType"
+            defaultValue={JOB_TYPE.FULL_TIME}
+            list={Object.values(JOB_TYPE)}
           />
           <button
             type="submit"
