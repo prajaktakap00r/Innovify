@@ -38,7 +38,7 @@ export default function EditJob() {
         <h4 className="form-title">Edit Job</h4>
         <div className="form-center">
           <FormRow type="text" name="position" defaultValue={job.position} />
-          <FormRow type="text" name="comapny" defaultValue={job.company} />
+          <FormRow type="text" name="company" defaultValue={job.company} />
           <FormRow
             type="text"
             name="jobLocation"
