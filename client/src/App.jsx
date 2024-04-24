@@ -14,6 +14,7 @@ import {
   AllJobs,
   Profile,
   Admin,
+  EditJob,
 } from "../src/pages";
 
 import { action as registerAction } from "./pages/Register";
@@ -63,17 +64,21 @@ const router = createBrowserRouter([
             element: <Stats />,
           },
           {
-            path: "Profile",
+            path: "profile",
             element: <Profile />,
           },
           {
-            path: "Admin",
+            path: "ddmin",
             element: <Admin />,
           },
           {
             path: "all-jobs",
             element: <AllJobs />,
             loader: allJobsLoader,
+          },
+          {
+            path: "edit-job/:id",
+            element: <EditJob />,
           },
         ],
       },
