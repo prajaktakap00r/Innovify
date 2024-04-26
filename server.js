@@ -55,7 +55,7 @@ app.use("*", (req, res) => {
 app.use(errorHandleMiddleware);
 
 // Connect to MongoDB
-const port = process.env.PORT || 5200;
+const port = process.env.PORT || 5100;
 try {
   await mongoose.connect(process.env.MONGO_URL);
   app.listen(port, () => {
