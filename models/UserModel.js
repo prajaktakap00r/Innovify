@@ -17,6 +17,8 @@ const UserSchema = new mongoose.Schema({
     enum: ["user", "admin"],
     default: "user",
   },
+  avatar: String,
+  avatarPublicId: String,
 });
 // remove the password when we display the current user/used in userController
 //fucntion name is toJSON
