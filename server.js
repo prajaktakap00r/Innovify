@@ -3,6 +3,7 @@ import express from "express";
 import morgan from "morgan";
 import * as dotenv from "dotenv";
 import mongoose from "mongoose";
+import cloudinary from "cloudinary";
 // Import routers
 import jobRouter from "./routers/jobRouter.js";
 import authRouter from "./routers/authRouter.js";
@@ -20,7 +21,12 @@ import cookieParser from "cookie-parser";
 const app = express();
 // Load environment variables from .env file
 dotenv.config();
-
+//cloudinary
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.CLOUD_API_KEY,
+  api_secret: process.env.CLOUD_API_SECRET,
+});
 // Middleware
 const __dirname = dirname(fileURLToPath(import.meta.url));
 if (process.env.NODE_ENV === "development") {
