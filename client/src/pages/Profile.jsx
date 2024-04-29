@@ -1,7 +1,7 @@
 import { FormRow } from "../components";
 import Wrapper from "../assets/wrappers/DashboardFormPage";
 import { redirect, useOutletContext } from "react-router-dom";
-import { useNavigation, Form } from "react-router-dom";
+import { Form } from "react-router-dom";
 import customFetch from "../utils/customFetch";
 import { toast } from "react-toastify";
 import SubmitBtn from "../components/SubmitBtn";
@@ -54,7 +54,7 @@ export default function Profile() {
             <FormRow type="text" name="location" defaultValue={location} />
             <FormRow type="email" name="email" defaultValue={email} />
 
-            <SubmitBtn />
+            <SubmitBtn formBtn />
           </div>
         </Form>
       </Wrapper>

@@ -57,7 +57,7 @@ export default function EditJob() {
             defaultValue={job.jobType}
             list={Object.values(JOB_TYPE)}
           />
-          <SubmitBtn />
+          <SubmitBtn formBtn />
         </div>
       </Form>
     </Wrapper>
