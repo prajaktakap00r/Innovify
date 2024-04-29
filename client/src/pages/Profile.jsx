@@ -4,6 +4,7 @@ import { redirect, useOutletContext } from "react-router-dom";
 import { useNavigation, Form } from "react-router-dom";
 import customFetch from "../utils/customFetch";
 import { toast } from "react-toastify";
+import SubmitBtn from "../components/SubmitBtn";
 
 export const action = async ({ request }) => {
   const formData = await request.formData();
@@ -24,8 +25,7 @@ export const action = async ({ request }) => {
 export default function Profile() {
   const { user } = useOutletContext();
   const { name, lastName, email, location } = user;
-  const navigation = useNavigation();
-  const isSubmitting = navigation.state === "submitting";
+
   return (
     <div>
       <Wrapper>
@@ -54,13 +54,7 @@ export default function Profile() {
             <FormRow type="text" name="location" defaultValue={location} />
             <FormRow type="email" name="email" defaultValue={email} />
 
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="btn form-btn btn-block"
-            >
-              {isSubmitting ? "Submitting.." : "Submit"}
-            </button>
+            <SubmitBtn />
           </div>
         </Form>
       </Wrapper>

@@ -5,6 +5,7 @@ import { JOB_STATUS, JOB_TYPE } from "../../../utils/constants";
 import { Form, useNavigation, redirect } from "react-router-dom";
 import { toast } from "react-toastify";
 import customFetch from "../utils/customFetch";
+import SubmitBtn from "../components/SubmitBtn";
 
 export const loader = async ({ params }) => {
   try {
@@ -30,8 +31,7 @@ export const action = async ({ request, params }) => {
 };
 export default function EditJob() {
   const { job } = useLoaderData();
-  const navigating = useNavigation();
-  const isSubmitting = navigating.state === "Submitting";
+
   return (
     <Wrapper>
       <Form method="post" className="form">
@@ -57,13 +57,7 @@ export default function EditJob() {
             defaultValue={job.jobType}
             list={Object.values(JOB_TYPE)}
           />
-          <button
-            type="submit"
-            className="btn btn-block form-btn"
-            disabled={isSubmitting}
-          >
-            {isSubmitting ? "Submitting..." : "Submit"}
-          </button>
+          <SubmitBtn />
         </div>
       </Form>
     </Wrapper>
