@@ -13,6 +13,7 @@ import {
   validateIdParam,
 } from "../middleware/validationMiddleware.js";
 import { checkForTestUser } from "../middleware/authMiddleware.js";
+import { showStats } from "../controllers/jobController.js";
 // router.get('/', getAllJobs);
 // router.post('/', createJob);
 

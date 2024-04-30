@@ -1,7 +1,8 @@
 import "express-async-errors";
 import Job from "../models/JobModels.js";
 import { StatusCodes } from "http-status-codes";
-
+import mongoose from "mongoose";
+import dayjs from "dayjs";
 export const getAllJobs = async (req, res) => {
   const jobs = await Job.find({ createdBy: req.user.userId });
   res.status(StatusCodes.OK).json({ jobs });
@@ -31,4 +32,8 @@ export const deleteJob = async (req, res) => {
   const removedjob = await Job.findByIdAndDelete(req.params.id);
 
   res.status(StatusCodes.OK).json({ msg: "job deleted", job: removedjob });
+};
+
+export const showStats = async () => {
+  res.send("showstats");
 };
