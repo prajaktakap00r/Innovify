@@ -3,12 +3,21 @@ import customFetch from "../utils/customFetch";
 import { useLoaderData } from "react-router-dom";
 
 export const loader = async () => {
-  return null;
+  try {
+    const response = await customFetch.get("/jobs/stats");
+    return response.data;
+  } catch (error) {
+    return error;
+  }
 };
 export default function Stats() {
+  const { defaultStats, monthlyApplications } = useLoaderData();
   return (
-    <div>
-      <h1>Stats Layout</h1>
-    </div>
+    <>
+      <StatsContainer defaultStats={defaultStats} />
+      {monthlyApplications?.length > 1 && (
+        <ChartsConatiner data={monthlyApplications} />
+      )}
+    </>
   );
 }
