@@ -8,6 +8,7 @@ export const getAllJobs = async (req, res) => {
   const queryObject = {
     createdBy: req.user.userId,
   };
+  //any char search for company and position
   if (search) {
     queryObject.$or = [
       { position: { $regex: search, $options: "i" } },
