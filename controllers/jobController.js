@@ -4,7 +4,7 @@ import { StatusCodes } from "http-status-codes";
 import mongoose from "mongoose";
 import day from "dayjs";
 export const getAllJobs = async (req, res) => {
-  const { search, jobStatus, jobType } = req.query;
+  const { search, jobStatus, jobType, sort } = req.query;
   //jobStatus and JobType for display all jobs
   const queryObject = {
     createdBy: req.user.userId,
@@ -23,7 +23,14 @@ export const getAllJobs = async (req, res) => {
   if (jobType && jobType !== "all") {
     queryObject.jobStatus = jobStatus;
   }
-  const jobs = await Job.find({ queryObject });
+  const sortOptions = {
+    newest: "-createdAt",
+    oldest: "createdAt",
+    "a-z": "position",
+    "z-a": "-position",
+  };
+  const sortKey = sortOptions[sort] || sortOptions.newest;
+  const jobs = await Job.find(queryObject);
   res.status(StatusCodes.OK).json({ jobs });
 };
 
