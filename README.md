@@ -1,8 +1,6 @@
 
 #### Complete App
 
-)
-
 #### Create React APP
 
 [VITE]

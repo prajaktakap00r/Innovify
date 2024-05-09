@@ -4,7 +4,8 @@ import { StatusCodes } from "http-status-codes";
 import mongoose from "mongoose";
 import day from "dayjs";
 export const getAllJobs = async (req, res) => {
-  const { search } = req.query;
+  const { search, jobStatus, jobType } = req.query;
+  //jobStatus and JobType for display all jobs
   const queryObject = {
     createdBy: req.user.userId,
   };
@@ -14,6 +15,13 @@ export const getAllJobs = async (req, res) => {
       { position: { $regex: search, $options: "i" } },
       { company: { $regex: search, $options: "i" } },
     ];
+  }
+  //previosuly we we're not gettig all jobs on selecting the filter of all
+  if (jobStatus && jobStatus !== "all") {
+    queryObject.jobStatus = jobStatus;
+  }
+  if (jobType && jobType !== "all") {
+    queryObject.jobStatus = jobStatus;
   }
   const jobs = await Job.find({ queryObject });
   res.status(StatusCodes.OK).json({ jobs });
