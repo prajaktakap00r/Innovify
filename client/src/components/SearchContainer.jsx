@@ -5,7 +5,19 @@ import { JOB_TYPE, JOB_STATUS, JOB_SORT_BY } from "../../../utils/constants";
 import { useAllJobsContext } from "../pages/AllJobs";
 
 export default function SearchContainer() {
+  const { searchValues } = useAllJobsContext();
+  const { search, jobStatus, jobType, sort } = searchValues;
   const submit = useSubmit();
+  const debounce = (onChange) => {
+    let timeout;
+    return (e) => {
+      const form = e.currentTarget.form;
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        onChange(form);
+      }, 2000);
+    };
+  };
   return (
     <Wrapper>
       <Form className="form">
@@ -14,16 +26,16 @@ export default function SearchContainer() {
           <FormRow
             type="search"
             name="search"
-            defaultValue="a"
-            onChange={(e) => {
-              submit(e.currentTarget.form);
-            }}
+            defaultValue={search}
+            onChange={debounce((form) => {
+              submit(form);
+            })}
           />
           <FromRowSelect
             labelText="job status"
             name="jobStatus"
             list={["all", ...Object.values(JOB_STATUS)]}
-            defaultValue="all"
+            defaultValue={jobStatus}
             onChange={(e) => {
               submit(e.currentTarget.form);
             }}
@@ -31,15 +43,15 @@ export default function SearchContainer() {
           <FromRowSelect
             labelText="job type"
             name="jobType"
-            defaultValue={jobType}
             list={["all", ...Object.values(JOB_TYPE)]}
+            defaultValue={jobType}
             onChange={(e) => {
               submit(e.currentTarget.form);
             }}
           />
           <FromRowSelect
             name="sort"
-            defaultValue="newest"
+            defaultValue={sort}
             list={[...Object.values(JOB_SORT_BY)]}
             onChange={(e) => {
               submit(e.currentTarget.form);
