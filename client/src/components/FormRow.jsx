@@ -1,4 +1,10 @@
-export default function FormRow({ type, name, labelText, defaultValue }) {
+export default function FormRow({
+  type,
+  name,
+  labelText,
+  defaultValue,
+  onChange,
+}) {
   return (
     <div style={{ margin: 10 }}>
       <label className="form-label" htmlFor={name}>
@@ -10,6 +16,7 @@ export default function FormRow({ type, name, labelText, defaultValue }) {
         name={name}
         className="form-input"
         defaultValue={defaultValue || ""}
+        onChange={onChange}
         required
       />
     </div>
