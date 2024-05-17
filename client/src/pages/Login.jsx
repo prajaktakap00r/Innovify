@@ -36,12 +36,8 @@ export default function Login() {
       <Form method="post" className="form">
         <Logo />
         <h4>login</h4>
-        <FormRow
-          type="email"
-          name="email"
-          defaultValue="kprajakta235@gmail.com"
-        />
-        <FormRow type="password" name="password" defaultValue="secret123" />
+        <FormRow type="email" name="email" />
+        <FormRow type="password" name="password" />
         <SubmitBtn />
         <button type="button" className="btn btn-block" onClick={loginDemoUser}>
           explore the app
