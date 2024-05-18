@@ -14,7 +14,7 @@ export default function Landing() {
       <div className="container page">
         <div>
           <h1>
-            Pioneer <span>Finder</span> App
+            Job <span>Finder</span> App
           </h1>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
