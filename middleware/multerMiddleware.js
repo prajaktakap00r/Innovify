@@ -1,12 +1,9 @@
 import multer from "multer";
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "public/uploads");
-  },
-  filename: (req, file, cb) => {
-    const fileName = file.originalname;
-    cb(null, fileName);
-  },
-});
+import DataParser from "datauri/parser.js";
+import path from "path";
+const storage = multer.memoryStorage();
 const upload = multer({ storage });
+export const formatImage = (file) => {
+  console.log(file);
+};
 export default upload;
