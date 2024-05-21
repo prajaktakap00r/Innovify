@@ -10,15 +10,14 @@ const statsQuery = {
     return response.data;
   },
 };
-
-export const loader = async () => {
+//load and then no load for 5 mins
+export const loader = (queryClient) => async () => {
+  const data = await queryClient.ensureQueryData(statsQuery);
   return null;
-  //const response = await customFetch.get("/jobs/stats");
-  //return response.data;
 };
 
 export default function Stats() {
-  const { isLoading, isError, data } = useQuery(statsQuery);
+  const { data } = useQuery(statsQuery);
 
   const { defaultStats, monthlyApplications } = data;
 
