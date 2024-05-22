@@ -16,7 +16,9 @@ import path from "path";
 import errorHandleMiddleware from "./middleware/errorHandlerMiddleware.js";
 import { authenticateUser } from "./middleware/authMiddleware.js";
 import cookieParser from "cookie-parser";
-
+// security imports
+import helmet from "helmet";
+import ExpressMongoSanitize from "express-mongo-sanitize";
 // Create Express app
 const app = express();
 // Load environment variables from .env file
@@ -35,16 +37,9 @@ if (process.env.NODE_ENV === "development") {
 app.use(express.static(path.resolve(__dirname, "./client/dist")));
 app.use(cookieParser());
 app.use(express.json());
+app.use(helmet());
+app.use(ExpressMongoSanitize());
 
-// Routes
-app.get("/", (req, res) => {
-  res.send("Hello World");
-});
-
-// Additional route for receiving data
-app.get("/api/v1/test", (req, res) => {
-  res.json({ msg: "test route" });
-});
 app.post("/api/v1/test", (req, res) => {
   const { name } = req.body;
   res.json({ msg: `hello ${name}` });
