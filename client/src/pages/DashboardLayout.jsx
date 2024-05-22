@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import Wrapper from "../assets/wrappers/Dashboard";
 import { SmallSidebar, Navbar, BigSideBar, Loading } from "../components";
-import { useState, createContext, useContext } from "react";
+import { useState, createContext, useContext, useEffect } from "react";
 import { checkDefaultTheme } from "../App";
 import { toast } from "react-toastify";
 import customFetch from "../utils/customFetch";
