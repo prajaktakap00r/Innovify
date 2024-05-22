@@ -58,6 +58,23 @@ export default function DashboardLayout({ queryClient }) {
     toast.success("Logging out...");
   };
 
+  customFetch.interceptors.response.use(
+    (response) => {
+      return response;
+    },
+    (error) => {
+      if (error?.response?.status === 401) {
+        setIsAuthError(true);
+      }
+      return Promise.reject(error);
+    }
+  );
+
+  useEffect(() => {
+    if (!isAuthError) return;
+    logoutUser();
+  }, [isAuthError]);
+
   return (
     <DashboardContext.Provider
       value={{
